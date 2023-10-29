@@ -2,16 +2,15 @@ import { NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
 
 export async function GET() {
-
   const uri = process.env.URI;
-let client;
+  let client;
   try {
-     client = new MongoClient(uri);
+    client = new MongoClient(uri);
     const db = client.db("App-data");
 
     const donatedPets = await db.collection("donate").find().toArray();
 
-    return  NextResponse.json(donatedPets)
+    return NextResponse.json(donatedPets);
   } catch (e) {
     console.error(e);
     return NextResponse(
@@ -21,8 +20,8 @@ let client;
       {
         status: 500,
       }
-    )
+    );
   } finally {
-    await client.close()
+    await client.close();
   }
 }

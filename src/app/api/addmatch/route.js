@@ -20,10 +20,10 @@ export async function PUT(req) {
 
     const user = await users.updateOne(query, updateDocument);
 
-    return NextResponse.json(user);
+    return  NextResponse.json(user);
   } catch (e) {
     console.log(e);
-    return NextResponse.json(
+    return  NextResponse.json(
       { message: "add match error" },
       {
         status: 500,

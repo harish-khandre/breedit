@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Blog = () => {
   return (
@@ -9,7 +10,9 @@ const Blog = () => {
           <div className="flex flex-wrap -m-4">
             <div className="p-4 md:w-1/3">
               <div className="h-full  bg-[#505f2f]   rounded-lg overflow-hidden blogCard">
-                <img
+                <Image
+                  width={250}
+                  height={192}
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
                   src="https://images.pexels.com/photos/4408935/pexels-photo-4408935.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="blog"
@@ -80,7 +83,9 @@ const Blog = () => {
             </div>
             <div className="p-4 md:w-1/3">
               <div className="h-full  bg-[#505f2f]  rounded-lg overflow-hidden blogCard">
-                <img
+                <Image
+                  width={250}
+                  height={192}
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
                   src="https://images.pexels.com/photos/5490235/pexels-photo-5490235.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="blog"
@@ -151,7 +156,9 @@ const Blog = () => {
             </div>
             <div className="p-4 md:w-1/3">
               <div className="h-full  bg-[#505f2f] rounded-lg overflow-hidden blogCard">
-                <img
+                <Image
+                  width={250}
+                  height={192}
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
                   src="https://images.pexels.com/photos/6469639/pexels-photo-6469639.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="blog"
@@ -169,7 +176,8 @@ const Blog = () => {
                     offers them natural protection from the elements.{" "}
                   </p>
                   <div className="flex items-center flex-wrap ">
-                    <Link href="https://www.thepetexpress.co.uk/blog/general-interest/covers-and-weather-shields-for-your-rabbit-hutch/"
+                    <Link
+                      href="https://www.thepetexpress.co.uk/blog/general-interest/covers-and-weather-shields-for-your-rabbit-hutch/"
                       className="hover:text-[#505f2f] inline-flex items-center md:mb-2 lg:mb-0"
                     >
                       Learn More

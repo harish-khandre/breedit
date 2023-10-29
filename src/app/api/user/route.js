@@ -30,8 +30,7 @@ export async function GET(req) {
           status: 404,
         }
       );
-    }       
-
+    }
 
     return NextResponse.json(user);
   } catch (error) {

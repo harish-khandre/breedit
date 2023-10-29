@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Team = () => {
   return (
@@ -16,19 +17,21 @@ const Team = () => {
           <div className="flex flex-wrap -m-4">
             <div className="p-4 lg:w-1/4 md:w-1/2 ">
               <div className="h-full flex flex-col items-center text-center rounded-lg bg-[#505f2f] blogCard">
-                <img
+                <Image
+                  height={200}
+                  width={200}
+                  style={{ objectFit: "cover", objectPosition: "center" }}
                   alt="team"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
                   src="https://dummyimage.com/200x200"
                 />
                 <div className="w-full  ">
                   <h2 className="title-font font-medium text-lg  ">
-                    Alper Kamu
+                    Harish Khandre
                   </h2>
                   <h3 className="text-[#f7ebdb]  mb-3">UI Developer</h3>
                   <p className="mb-4 text-[#f7ebdb]">
-                    DIY tote bag drinking vinegar cronut adaptogen squid fanny
-                    pack vaporware.
+                    Developed front end of the Site
                   </p>
                   <span className="inline-flex">
                     <Link href="/" className="text-[#f7ebdb] ">
@@ -76,19 +79,21 @@ const Team = () => {
             </div>
             <div className="p-4 lg:w-1/4 md:w-1/2">
               <div className="h-full flex flex-col items-center text-center rounded-lg bg-[#505f2f] blogCard">
-                <img
+                <Image
+                  height={200}
+                  width={200}
+                  style={{ objectFit: "cover", objectPosition: "center" }}
                   alt="team"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
                   src="https://dummyimage.com/201x201"
                 />
                 <div className="w-full">
                   <h2 className="title-font font-medium text-lg  ">
-                    Holden Caulfield
+                    Harish Khandre
                   </h2>
-                  <h3 className="text-[#f7ebdb]  mb-3">UI Developer</h3>
+                  <h3 className="text-[#f7ebdb]  mb-3">Backend Developer</h3>
                   <p className="mb-4 text-[#f7ebdb]">
-                    DIY tote bag drinking vinegar cronut adaptogen squid fanny
-                    pack vaporware.
+                    Created Backend for this wonderful website
                   </p>
                   <span className="inline-flex">
                     <Link href="/" className="text-[#f7ebdb] ">
@@ -136,20 +141,20 @@ const Team = () => {
             </div>
             <div className="p-4 lg:w-1/4 md:w-1/2">
               <div className="h-full flex flex-col items-center text-center rounded-lg bg-[#505f2f] blogCard">
-                <img
+                <Image
+                  height={200}
+                  width={200}
+                  style={{ objectFit: "cover", objectPosition: "center" }}
                   alt="team"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
                   src="https://dummyimage.com/202x202"
                 />
                 <div className="w-full">
                   <h2 className="title-font font-medium text-lg  ">
-                    Atticus Finch
+                    Harish Khandre
                   </h2>
-                  <h3 className="text-[#f7ebdb]  mb-3">UI Developer</h3>
-                  <p className="mb-4 text-[#f7ebdb]">
-                    DIY tote bag drinking vinegar cronut adaptogen squid fanny
-                    pack vaporware.
-                  </p>
+                  <h3 className="text-[#f7ebdb]  mb-3">Full stack Developer</h3>
+                  <p className="mb-4 text-[#f7ebdb]">Create this site solely</p>
                   <span className="inline-flex">
                     <Link href="/" className="text-[#f7ebdb] ">
                       <svg
@@ -196,7 +201,10 @@ const Team = () => {
             </div>
             <div className="p-4 lg:w-1/4 md:w-1/2">
               <div className="h-full flex flex-col items-center text-center rounded-lg bg-[#505f2f] blogCard">
-                <img
+                <Image
+                  height={200}
+                  width={200}
+                  style={{ objectFit: "cover", objectPosition: "center" }}
                   alt="team"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
                   src="https://dummyimage.com/203x203"

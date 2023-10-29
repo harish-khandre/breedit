@@ -93,14 +93,14 @@ const Profile = () => {
                 </div>
               </div>
 
-              <div className="w-full lg:w-2/5">
+              <div className="w-full  lg:w-2/5">
                 <Image
                   src={user.url}
                   alt="pfp"
-                  width={700}
+                  width={1000}
                   height={500}
                   quality={100}
-                  className="rounded-none lg:rounded-lg shadow-2xl hidden lg:block"
+                  className="rounded-none lg:rounded-r-lg shadow-2xl hidden lg:block"
                 />
               </div>
             </div>

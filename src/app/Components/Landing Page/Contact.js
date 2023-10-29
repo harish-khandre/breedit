@@ -10,8 +10,9 @@ const Contact = () => {
               Contact Us
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Get in touch with us if you have any queries or concerns. We're
-              here to help you throughout your adoption process and beyond.
+              Get in touch with us if you have any queries or concerns.
+              We&apos;re here to help you throughout your adoption process and
+              beyond.
             </p>
           </div>
           <div className="lg:w-1/2 md:w-2/3 mx-auto">

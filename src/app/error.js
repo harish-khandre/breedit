@@ -13,7 +13,7 @@ export default function Error({ error, reset }) {
   return (
     <div className="grid place-items-center h-screen">
       <h2 className="text-[#c88572] text-2xl ">Something went wrong!</h2>
-      <Image src={sadDog1} alt="Error" width={300} height={200} />
+      {/* <Image  src={sadDog1} alt="Error" width={300} height={200} quality={100} /> */}
       {/* <iframe src="https://lottie.host/?file=5d593941-91ff-4184-971d-5b4436757b60/scoM2fgL7Z.json"></iframe> */}
       <h2 className="text-[#c88572] text-2xl ">Please try again</h2>{" "}
       <button

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 
@@ -47,12 +48,15 @@ const CarouselItem = ({ item }) => {
   return (
     <div className="relative flex justify-center items-center my-8 mt-16 pb-12 lg:h-[40rem] md:h-auto w-full">
       <div className="relative lg:h-[35rem] md:h-auto lg:w-[90%] border-4 border-dotted rounded-3xl border-[#505f2f] m-6 ">
-        <img
+        <Image
           src={item.url}
           alt={item.name}
-          className="h-full w-full object-cover rounded-2xl object-fit "
-          // loading="lazy"
-          placeholder="Loading"
+          style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          height={900}
+          width={900}
+          quality={100}
+          className="h-full w-full object-cover rounded-2xl  "
+      
         />
         <div className="lg:absolute lg:left-[65%] inset-0 flex flex-col justify-center items-center">
           <h2 className="text-[#505f2f] text-2xl font-bold text-left self-start pl-5 ">

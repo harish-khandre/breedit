@@ -44,13 +44,13 @@ const ChatComponent = () => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  });
 
   useEffect(() => {
     if (user) {
       getGenderedUsers();
     }
-  }, [user]);
+  });
 
   return (
     <>

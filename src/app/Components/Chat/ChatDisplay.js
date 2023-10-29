@@ -50,7 +50,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
   useEffect(() => {
     getUsersMessages();
     getClickedUsersMessages();
-  }, [userId, clickedUserId]);
+  });
 
   const messages = [];
 

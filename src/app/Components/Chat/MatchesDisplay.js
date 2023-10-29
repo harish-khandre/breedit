@@ -1,6 +1,7 @@
 "use client";
 
 import axios from "axios";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
@@ -27,7 +28,7 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
 
   useEffect(() => {
     getMatches();
-  }, [matches, userId]);
+  });
 
   if (matchedProfiles && matchedProfiles.length > 0) {
 
@@ -46,7 +47,7 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
             onClick={() => setClickedUser(match)}
           >
             <div className="img-container">
-              <img src={match?.url} alt={match?.pet_name + " profile"} />
+              <Image height={100} width={100} src={match?.url} alt={match?.pet_name + " profile"} />
             </div>
             <h3>{match?.pet_name}</h3>
           </div>

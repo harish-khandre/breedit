@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Content = () => {
@@ -14,17 +15,25 @@ const Content = () => {
             </div>
             <p className="lg:w-1/2 w-full text-base leading-relaxed text-[#505f2f]">
               BREEDIT is committed to breeding healthy and happy pets for
-              adoption. We care for our pets and ensure that they're given a
-              loving and nurturing environment.
+              adoption. We care for our pets and ensure that they&apos;re given
+              a loving and nurturing environment.
             </p>
           </div>
           <div className="flex flex-wrap -m-4">
             <div className="xl:w-1/4 md:w-1/2 p-4">
               <div className="bg-[#505f2f]  rounded-full blogCard contain">
-                <img
+                <Image
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    width: "100%",
+                  }}
+                  height={384}
+                  width={300}
                   className="img h-96 rounded-full w-full object-cover object-center "
                   src="https://media.tenor.com/APAoWgAqNxkAAAAM/cat-dance-catto-dace.gif"
                   alt="content"
+                  priority={false}
                 />
                 <div className="middle">
                   <h3 className="TextOnImg tracking-widest text-[#f7ebdb] text-xl text-center  font-medium title-font">
@@ -35,7 +44,15 @@ const Content = () => {
             </div>
             <div className="xl:w-1/4 md:w-1/2 p-4">
               <div className="bg-[#505f2f]  rounded-full blogCard contain ">
-                <img
+                <Image
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    width: "100%",
+                  }}
+                  width={300}
+                  height={384}
+                  priority={false}
                   className="img h-96 rounded-full w-full object-cover object-center "
                   src="https://media.tenor.com/cNnsPB7dYfYAAAAM/dancing-dog.gif"
                   alt="content"
@@ -49,7 +66,15 @@ const Content = () => {
             </div>
             <div className="xl:w-1/4 md:w-1/2 p-4">
               <div className="bg-[#505f2f]  rounded-full blogCard contain">
-                <img
+                <Image
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    width: "100%",
+                  }}
+                  width={300}
+                  height={384}
+                  priority={false}
                   className="img h-96 rounded-full w-full object-cover object-center "
                   src="https://media.tenor.com/Jxbk24m0vV4AAAAM/vibe-rabbit.gif"
                   alt="content"
@@ -63,7 +88,15 @@ const Content = () => {
             </div>
             <div className="xl:w-1/4 md:w-1/2 p-4 md:pb-8">
               <div className="bg-[#505f2f]  contain rounded-full blogCard   ">
-                <img
+                <Image
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    width: "100%",
+                  }}
+                  width={300}
+                  height={384}
+                  priority={false}
                   className=" img h-96 rounded-full w-full object-cover object-center "
                   src="https://media.tenor.com/y_iz1S6VNfkAAAAM/eternaldamnationhamster-edhamsterdance.gif"
                   alt="content"
