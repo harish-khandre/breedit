@@ -210,7 +210,7 @@ const FormPage = () => {
             />
           </div>
           <div className="flex flex-col border-none">
-            <label htmlFor="url">Profile Photo</label>
+            <label htmlFor="url">Profile Photo URL </label>
             <input
               type="url"
               name="url"
