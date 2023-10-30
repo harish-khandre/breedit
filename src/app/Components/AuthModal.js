@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 
@@ -46,14 +46,21 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         const responseData = await response.json();
         setCookie("UserId", responseData.userId); // Access the 'userId' property
         setCookie("AuthToken", responseData.token);
+     
         router.push(isSignUp ? "/onboarding" : "/findpet");
       }
     } catch (error) {
       setError(error.response?.data?.error || "Something went wrong");
-      toast.error("Wrong Password");
+      toast.error("Something went wrong, Check your Password");
       console.error(error);
+      setIsLoading(false);
     }
   };
+  //  useEffect(() => {
+  //    if (isLoading) {
+  //      setIsLoading(false);
+  //    }
+  //  }, [isLoading]);
 
   const handleClick = () => {
     setShowModal(false);

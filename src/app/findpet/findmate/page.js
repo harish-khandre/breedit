@@ -36,16 +36,20 @@ const Dashboard = () => {
   };
   const getGenderedUsers = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/gendered-users",
-        {
-          params: { gender: user?.gender_interest },
-          next: {
-            revalidate: 10,
-          },
-        }
-      );
-      setGenderedUsers(response.data);
+      if (user?.gender_interest === null || undefined) {
+        return;
+      } else{
+        const response = await axios.get(
+          "http://localhost:3000/api/gendered-users",
+          {
+            params: { gender: user?.gender_interest },
+            next: {
+              revalidate: 10,
+            },
+          }
+        );
+        setGenderedUsers(response.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -85,14 +89,14 @@ const Dashboard = () => {
   };
 
   const matchedUserIds = user?.matches
-    .map(({ user_id }) => user_id)
+    ?.map(({ user_id }) => user_id)
     .concat(userId);
 
   const filteredGenderedUsers = genderedUsers?.filter((genderedUser) => {
     return (
       genderedUser &&
       genderedUser.user_id &&
-      !matchedUserIds.includes(genderedUser.user_id)
+      !matchedUserIds?.includes(genderedUser.user_id)
     );
   });
 

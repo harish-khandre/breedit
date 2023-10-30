@@ -61,8 +61,8 @@ export async function POST(req) {
       process.env.JWT_SECRET,
       { expiresIn: "48h" }
     );
-
     // Return a success response with the token and user ID.
+    console.log("User Added");
     return NextResponse.json(
       { token, userId: generatedUserId },
       { status: 201 }
