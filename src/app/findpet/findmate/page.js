@@ -58,29 +58,8 @@ const Dashboard = () => {
   useEffect(() => {
     if (user) {
       getGenderedUsers();
-      // const interval = setInterval(() => {
-      //   getGenderedUsers();
-      //   return () => clearInterval(interval);
-      // }, 1000);
     }
-  }, [user]);
-
-  // const updateMatches = async (matchedUserId) => {
-  //   try {
-  //     data = {
-  //       userId,
-  //       matchedUserId,
-  //     };
-
-  //     await fetch(`http://localhost:3000/api/addmatch`, {
-  //       method: "PUT",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(data),
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  });
 
   const updateMatches = async (matchedUserId) => {
     try {

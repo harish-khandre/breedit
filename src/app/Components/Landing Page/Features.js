@@ -11,7 +11,7 @@ const Features = () => {
               Breeding love, one pet at a time.{" "}
             </h1>
             <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-[#505f2f]">
-              We are passionate about breeding pets and making sure they're
+              We are passionate about breeding pets and making sure they&apos;re
               healthy and happy. Our team is made up of experts in breeding and
               animal care, so you can trust our services.
             </p>
@@ -82,9 +82,9 @@ const Features = () => {
                   High-Quality Care
                 </h2>
                 <p className="leading-relaxed text-base text-[#505f2f]">
-                  We care for our pets like they're our own. They're checked and
-                  tested for any health conditions, vaccinations are kept
-                  up-to-date, and they're given a healthy diet.
+                  We care for our pets like they&apos;re our own. They&apos;re
+                  checked and tested for any health conditions, vaccinations are
+                  kept up-to-date, and they&apos;re given a healthy diet.
                 </p>
                 <Link
                   href="/"
@@ -125,8 +125,9 @@ const Features = () => {
                   Selection of Breeds
                 </h2>
                 <p className="leading-relaxed text-base text-[#505f2f]">
-                  We have a selection of breeds for you to choose from. We're
-                  sure you'll find the perfect companion for your lifestyle.
+                  We have a selection of breeds for you to choose from.
+                  We&apos;re sure you&apos;ll find the perfect companion for
+                  your lifestyle.
                 </p>
                 <Link
                   href="/"

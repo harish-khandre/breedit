@@ -56,7 +56,6 @@ const CarouselItem = ({ item }) => {
           width={900}
           quality={100}
           className="h-full w-full object-cover rounded-2xl  "
-      
         />
         <div className="lg:absolute lg:left-[65%] inset-0 flex flex-col justify-center items-center">
           <h2 className="text-[#505f2f] text-2xl font-bold text-left self-start pl-5 ">
