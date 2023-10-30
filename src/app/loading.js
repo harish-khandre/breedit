@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Loading() {
   return (
     <div className=" bg-[#f7ebdb] grid place-items-center h-screen  ">
-      <div className="flex flex-col gap-4 ">
+      <div className="flex flex-col">
         {/* <iframe src={runningDog}></iframe> */}
         {/* <iframe src="https://lottie.host/?file=2bb95f8d-365f-4c52-ad64-c09877253ce9/eTCrIAPJcE.json"></iframe> */}
         <Image

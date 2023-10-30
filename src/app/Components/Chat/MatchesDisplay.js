@@ -14,12 +14,16 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
 
   const getMatches = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/users", {
-        params: { userIds: JSON.stringify(matchedUserIds) }, next: {
-          revalidate: 10
+      const response = await axios.get(
+        "https://breedit.vercel.app/api/users",
+        {
+          params: { userIds: JSON.stringify(matchedUserIds) },
+          next: {
+            revalidate: 10,
+          },
+          // original one = params: { userIds: JSON.stringify(matchedUserIds) },
         }
-        // original one = params: { userIds: JSON.stringify(matchedUserIds) },
-      });
+      );
       setMatchedProfiles(response.data);
     } catch (error) {
       console.log(error);
@@ -31,7 +35,6 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
   });
 
   if (matchedProfiles && matchedProfiles.length > 0) {
-
     const filteredMatchedProfiles = matchedProfiles.filter((matchedProfile) => {
       return matchedProfile.matches.some(
         (profile) => profile.user_id === userId
@@ -47,7 +50,12 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
             onClick={() => setClickedUser(match)}
           >
             <div className="img-container">
-              <Image height={100} width={100} src={match?.url} alt={match?.pet_name + " profile"} />
+              <Image
+                height={100}
+                width={100}
+                src={match?.url}
+                alt={match?.pet_name + " profile"}
+              />
             </div>
             <h3>{match?.pet_name}</h3>
           </div>

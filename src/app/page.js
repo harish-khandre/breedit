@@ -15,7 +15,9 @@ import { useCookies } from "react-cookie";
 import Hero from "../app/Components/Landing Page/Hero";
 
  export default function Page () {
+
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
   const authToken = cookies.AuthToken;
 
   return (

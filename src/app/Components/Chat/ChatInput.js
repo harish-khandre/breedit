@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import axios from "axios";
@@ -22,7 +22,7 @@ const ChatInput = ({
     };
 
     try {
-      await axios.post("http://localhost:3000/api/messages", {
+      await axios.post("https://breedit.vercel.app/api/messages", {
         message,
       });
       getUsersMessages();

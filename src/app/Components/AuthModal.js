@@ -34,7 +34,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       };
 
       const response = await fetch(
-        `http://localhost:3000/api/${isSignUp ? "register" : "login"}`,
+        `https://breedit.vercel.app/api/${isSignUp ? "register" : "login"}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -46,7 +46,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         const responseData = await response.json();
         setCookie("UserId", responseData.userId); // Access the 'userId' property
         setCookie("AuthToken", responseData.token);
-     
+
         router.push(isSignUp ? "/onboarding" : "/findpet");
       }
     } catch (error) {

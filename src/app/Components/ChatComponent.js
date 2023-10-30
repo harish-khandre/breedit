@@ -1,12 +1,10 @@
 "use client";
 
-
 import { cache, useEffect, useState } from "react";
 import ChatContainer from "./Chat/ChatContainer";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import Navbar from "./Navbar";
-
 
 const ChatComponent = () => {
   const [user, setUser] = useState(null);
@@ -18,9 +16,12 @@ const ChatComponent = () => {
 
   const getUser = cache(async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/user", {
-        params: { userId },
-      });
+      const response = await axios.get(
+        "https://breedit.vercel.app/api/user",
+        {
+          params: { userId },
+        }
+      );
       setUser(response.data);
     } catch (error) {
       console.log(error);
@@ -29,11 +30,12 @@ const ChatComponent = () => {
   const getGenderedUsers = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/gendered-users",
+        "https://breedit.vercel.app/api/gendered-users",
         {
-          params: { gender: user?.gender_interest }, next: {
-            revalidate: 10
-          }
+          params: { gender: user?.gender_interest },
+          next: {
+            revalidate: 10,
+          },
         }
       );
       setGenderedUsers(response.data);

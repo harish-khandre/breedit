@@ -38,9 +38,12 @@ function OnBoarding() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.put("http://localhost:3000/api/user", {
-        formData,
-      });
+      const response = await axios.put(
+        "https://breedit.vercel.app/api/user",
+        {
+          formData,
+        }
+      );
 
       const success = response.status === 200;
       if (success) router.push("/findpet");

@@ -7,9 +7,7 @@ export async function GET() {
   try {
     client = new MongoClient(uri);
     const db = client.db("App-data");
-
     const donatedPets = await db.collection("donate").find().toArray();
-
     return NextResponse.json(donatedPets);
   } catch (e) {
     console.error(e);

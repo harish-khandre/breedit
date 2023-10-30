@@ -69,7 +69,10 @@ export async function POST(req) {
     );
   } catch (e) {
     console.error(e);
-    return NextResponse.json({ message: "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { message: " Register Server error " },
+      { status: 500 }
+    );
   } finally {
     await client.close();
   }

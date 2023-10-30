@@ -23,12 +23,15 @@ const Dashboard = () => {
 
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/user", {
-        params: { userId },
-        next: {
-          revalidate: 10,
-        },
-      });
+      const response = await axios.get(
+        "https://breedit.vercel.app/api/user",
+        {
+          params: { userId },
+          next: {
+            revalidate: 10,
+          },
+        }
+      );
       setUser(response.data);
     } catch (error) {
       console.log(error);
@@ -38,9 +41,9 @@ const Dashboard = () => {
     try {
       if (user?.gender_interest === null || undefined) {
         return;
-      } else{
+      } else {
         const response = await axios.get(
-          "http://localhost:3000/api/gendered-users",
+          "https://breedit.vercel.app/api/gendered-users",
           {
             params: { gender: user?.gender_interest },
             next: {
@@ -67,7 +70,7 @@ const Dashboard = () => {
 
   const updateMatches = async (matchedUserId) => {
     try {
-      await axios.put("http://localhost:3000/api/addmatch", {
+      await axios.put("https://breedit.vercel.app/api/addmatch", {
         userId,
         matchedUserId,
       });

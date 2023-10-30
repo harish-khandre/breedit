@@ -10,6 +10,14 @@ export async function GET() {
     return  NextResponse.json(users);
   } catch (e) {
     console.error(e);
+      return NextResponse.json(
+        {
+          error: " User List User API Error  ",
+        },
+        {
+          status: 500,
+        }
+      );
   } finally {
     await client.close();
   }

@@ -9,21 +9,16 @@ export async function PUT(req) {
   try {
     client = new MongoClient(uri);
     const db = client.db("App-data");
-
     const users = db.collection("Users");
-
     const query = { user_id: userId };
-
     const updateDocument = {
       $push: { matches: { user_id: matchedUserId } },
     };
-
     const user = await users.updateOne(query, updateDocument);
-
-    return  NextResponse.json(user);
+    return NextResponse.json(user);
   } catch (e) {
     console.log(e);
-    return  NextResponse.json(
+    return NextResponse.json(
       { message: "add match error" },
       {
         status: 500,

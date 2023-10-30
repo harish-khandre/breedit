@@ -39,7 +39,7 @@ const Content = () => {
                   />
                   <div className="middle">
                     <h3 className="TextOnImg tracking-widest text-[#f7ebdb] text-xl text-center  font-medium title-font">
-                      Pussy
+                      Cat
                     </h3>
                   </div>
                 </div>

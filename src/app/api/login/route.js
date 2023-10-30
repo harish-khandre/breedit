@@ -9,29 +9,23 @@ export async function POST(req) {
   let client;
   try {
     client = new MongoClient(uri);
-
     const db = client.db("App-data");
-
     const users = db.collection("Users");
-
     const user = await users.findOne({ email });
     if (!user) {
       // Handle user not found
       console.log("User not found");
       return NextResponse.json("missing user");
     }
-
     if (!password || !user.hashed_password) {
       // Handle missing password or hashed_password
       console.log("Missing password or hashed_password");
-      return NextResponse.json("missing ");
+      return NextResponse.json("missing");
     }
-
     const correctPassword = await bcrypt.compare(
       password,
       user.hashed_password
     );
-
     if (user && correctPassword) {
       const token = jwt.sign(user, email, {
         expiresIn: 60 * 48,

@@ -6,23 +6,17 @@ export async function GET(req) {
   const url = new URL(req.url);
   const userId = url.searchParams.get("userId");
   const correspondingUserId = url.searchParams.get("correspondingUserId");
-
-  // const { userId, correspondingUserId } = await req.json(); //it was req.query
   const uri = process.env.URI;
   let client;
-
   try {
     client = new MongoClient(uri);
-
     const db = client.db("App-data");
-
     const messages = db.collection("messages");
     const query = {
       from_userId: userId,
       to_userId: correspondingUserId,
     };
     const foundMessages = await messages.find(query).toArray();
-
     return NextResponse.json(foundMessages);
   } catch (e) {
     console.error(e);
@@ -42,14 +36,15 @@ export async function POST(req) {
   try {
     client = new MongoClient(uri);
     const db = client.db("App-data");
-
     const messages = db.collection("messages");
-
     const insertedMessage = await messages.insertOne(message);
-
     return NextResponse.send(insertedMessage);
   } catch (e) {
     console.error(e);
+    return NextResponse.json(
+      { message: "messages api error" },
+      { status: 400 }
+    );
   } finally {
     await client.close();
   }

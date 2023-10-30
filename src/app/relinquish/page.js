@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 
 const FormPage = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(["user"])
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const [formData, setFormData] = useState({
     user_id: cookies.UserId,
@@ -58,7 +58,7 @@ const FormPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/submit",
+        "https://breedit.vercel.app/api/submit",
         formData
       );
       console.log(response);

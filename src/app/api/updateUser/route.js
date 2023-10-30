@@ -35,6 +35,14 @@ export async function PUT(req) {
     return NextResponse.json(insertedUser);
   } catch (e) {
     console.error(e);
+     return NextResponse.json(
+       {
+         error: " Updated User API Error  ",
+       },
+       {
+         status: 500,
+       }
+     );
   }finally {
     await client.close();
   }

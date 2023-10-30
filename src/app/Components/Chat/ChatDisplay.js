@@ -22,12 +22,15 @@ const ChatDisplay = ({ user, clickedUser }) => {
 
   const getUsersMessages = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/messages", {
-        params: { userId: userId, correspondingUserId: clickedUserId },
-        next: {
-          revalidate: 0,
-        },
-      });
+      const response = await axios.get(
+        "https://breedit.vercel.app/api/messages",
+        {
+          params: { userId: userId, correspondingUserId: clickedUserId },
+          next: {
+            revalidate: 0,
+          },
+        }
+      );
       setUsersMessages(response.data);
     } catch (error) {
       console.log(error);
@@ -35,12 +38,15 @@ const ChatDisplay = ({ user, clickedUser }) => {
   };
   const getClickedUsersMessages = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/messages", {
-        params: { userId: clickedUserId, correspondingUserId: userId },
-        next: {
-          revalidate: 0,
-        },
-      });
+      const response = await axios.get(
+        "https://breedit.vercel.app/api/messages",
+        {
+          params: { userId: clickedUserId, correspondingUserId: userId },
+          next: {
+            revalidate: 0,
+          },
+        }
+      );
       setClickedUsersMessages(response.data);
     } catch (error) {
       console.log(error);
