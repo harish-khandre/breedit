@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "../Components/Navbar";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import Image from "next/image";
 const FindPetPage = () => {
   return (
     <section>
+    <Navbar />
       <div className="mt-28">
         <div className="flex  justify-evenly items-center  ">
           <div className="findMate w-full  flex justify-center items-center ">
