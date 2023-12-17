@@ -16,12 +16,9 @@ const ChatComponent = () => {
 
   const getUser = cache(async () => {
     try {
-      const response = await axios.get(
-        "https://breedit.vercel.app/api/user",
-        {
-          params: { userId },
-        }
-      );
+      const response = await axios.get("https://breedit.vercel.app/api/user", {
+        params: { userId },
+      });
       setUser(response.data);
     } catch (error) {
       console.log(error);

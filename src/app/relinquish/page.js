@@ -1,5 +1,6 @@
 "use client";
 
+import { useMediaQuery } from "react-responsive";
 import React, { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
@@ -15,12 +16,13 @@ import {
   FormControlLabel,
   TextField,
 } from "@mui/material";
+import MobileUsers from "../Components/MobileUsers";
 
 const FormPage = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const [formData, setFormData] = useState({
-    user_id: cookies.UserId,
+    user_id: cookies?.UserId,
     name: "",
     age: "",
     breed: "",
@@ -85,7 +87,10 @@ const FormPage = () => {
     }
   };
 
-  return (
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  return isTabletOrMobile ? (
+    <MobileUsers />
+  ) : (
     <ThemeProvider theme={theme}>
       <div className="container m-auto mt-3 p-8 authBlogCard w-2/4 ">
         <h2 className="text-3xl my-4">Submit a Pet for Donation</h2>
@@ -136,10 +141,6 @@ const FormPage = () => {
               className=""
               required
             />{" "}
-            {/* <label className="absolute left-0 top-1 text-[#505f2f] cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#f7ebdb] transition-all">
-            {" "}
-            Age{" "}
-          </label> */}
           </div>
           <div className="flex flex-col relative">
             <TextField
@@ -153,10 +154,6 @@ const FormPage = () => {
               className="px-4 border-b border-[#505f2f]  focus:outline-none focus:border-[#f7ebdb] focus:border-b-2 transition-colors peer bg-transparent"
               required
             />{" "}
-            {/* <label className="absolute left-0 top-1 text-[#505f2f] cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#f7ebdb] transition-all">
-            {" "}
-            Breed{" "}
-          </label> */}
           </div>
           <div className="flex flex-col relative">
             <TextField
@@ -169,10 +166,6 @@ const FormPage = () => {
               onChange={handleChange}
               className="  px-4 border-b border-[#505f2f] py-1 focus:outline-none focus:border-[#f7ebdb] focus:border-b-2 transition-colors peer bg-transparent"
             />{" "}
-            {/* <label className="absolute left-0 top-1 text-[#505f2f] cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#f7ebdb] transition-all">
-            {" "}
-            Health Condition{" "}
-          </label> */}
           </div>
           <div className="flex flex-co relative">
             <InputLabel className="m-4" id="demo-simple-select-standard-label">

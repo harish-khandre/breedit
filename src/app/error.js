@@ -13,7 +13,7 @@ export default function Error({ error, reset }) {
   return (
     <div className="grid place-items-center h-screen">
       <h2 className="text-[#c88572] text-2xl ">Something went wrong!</h2>
-      <div style="width:100%;height:0;padding-bottom:100%;position:relative;">
+      <div className="w-screen h-0 pb-1 relative ">
         <iframe
           src="https://giphy.com/embed/pNE2skiVjBh5QYzqTT"
           width="100%"
@@ -25,12 +25,7 @@ export default function Error({ error, reset }) {
         ></iframe>
       </div>
       <h2 className="text-[#c88572] text-2xl ">Please try again</h2>{" "}
-      <button
-        className="button"
-        onClick={
-          () => reset()
-        }
-      >
+      <button className="button" onClick={() => reset()}>
         Try again
       </button>
     </div>

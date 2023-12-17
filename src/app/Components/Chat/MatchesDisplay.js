@@ -14,16 +14,13 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
 
   const getMatches = async () => {
     try {
-      const response = await axios.get(
-        "https://breedit.vercel.app/api/users",
-        {
-          params: { userIds: JSON.stringify(matchedUserIds) },
-          next: {
-            revalidate: 10,
-          },
-          // original one = params: { userIds: JSON.stringify(matchedUserIds) },
-        }
-      );
+      const response = await axios.get("https://breedit.vercel.app/api/users", {
+        params: { userIds: JSON.stringify(matchedUserIds) },
+        next: {
+          revalidate: 10,
+        },
+        // original one = params: { userIds: JSON.stringify(matchedUserIds) },
+      });
       setMatchedProfiles(response.data);
     } catch (error) {
       console.log(error);

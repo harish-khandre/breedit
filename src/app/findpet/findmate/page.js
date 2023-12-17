@@ -1,11 +1,13 @@
 "use client";
 
+import { useMediaQuery } from "react-responsive";
 import TinderCard from "react-tinder-card";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import { LoadingOutlined } from "@ant-design/icons";
+import MobileUsers from "@/app/Components/MobileUsers";
 const ChatContainer = dynamic(
   () => import("../../Components/Chat/ChatContainer"),
   {
@@ -23,15 +25,12 @@ const Dashboard = () => {
 
   const getUser = async () => {
     try {
-      const response = await axios.get(
-        "https://breedit.vercel.app/api/user",
-        {
-          params: { userId },
-          next: {
-            revalidate: 10,
-          },
-        }
-      );
+      const response = await axios.get("https://breedit.vercel.app/api/user", {
+        params: { userId },
+        next: {
+          revalidate: 10,
+        },
+      });
       setUser(response.data);
     } catch (error) {
       console.log(error);
@@ -103,7 +102,10 @@ const Dashboard = () => {
     );
   });
 
-  return (
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  return isTabletOrMobile ? (
+    <MobileUsers />
+  ) : (
     <>
       {user && (
         <div className="dashboard overflow-hidden ">
@@ -134,11 +136,6 @@ const Dashboard = () => {
                     </TinderCard>
                   ) : null // Return null if genderedUser or user_id is missing
               )}
-
-              {}
-              {/* <div className="swipe-info">
-                {lastDirection ? <p>You swiped {lastDirection}</p> : <p />}
-              </div> */}
             </div>
           </div>
         </div>

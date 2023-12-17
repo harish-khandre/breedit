@@ -8,6 +8,8 @@ import axios from "axios";
 import Link from "next/link";
 import { RightCircleOutlined } from "@ant-design/icons";
 import Image from "next/image";
+import MobileUsers from "../Components/MobileUsers";
+import { useMediaQuery } from "react-responsive";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -17,12 +19,9 @@ const Profile = () => {
 
   const getUser = cache(async () => {
     try {
-      const response = await axios.get(
-        "https://breedit.vercel.app/api/user",
-        {
-          params: { userId },
-        }
-      );
+      const response = await axios.get("https://breedit.vercel.app/api/user", {
+        params: { userId },
+      });
       setUser(response.data);
     } catch (error) {
       console.log(error);
@@ -33,7 +32,10 @@ const Profile = () => {
     getUser();
   });
 
-  return (
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  return isTabletOrMobile ? (
+    <MobileUsers />
+  ) : (
     <>
       <Navbar />
       {user && (

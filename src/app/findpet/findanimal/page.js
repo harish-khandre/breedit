@@ -6,6 +6,8 @@ import axios from "axios";
 import Navbar from "../../Components/Navbar";
 import { useCookies } from "react-cookie";
 import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
+import MobileUsers from "@/app/Components/MobileUsers";
 
 // export const revalidate = 60;
 
@@ -53,7 +55,10 @@ export default function FindAnimal() {
     );
   });
 
-  return (
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  return isTabletOrMobile ? (
+    <MobileUsers />
+  ) : (
     <>
       <Navbar />
 
