@@ -1,3 +1,5 @@
+"use client"
+
 import React, { Suspense } from "react";
 import Navbar from "../Components/Navbar";
 import dynamic from "next/dynamic";
