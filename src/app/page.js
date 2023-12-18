@@ -14,7 +14,7 @@ import Footer from "../app/Components/Footer";
 import { useCookies } from "react-cookie";
 import Hero from "../app/Components/Landing Page/Hero";
 import { useMediaQuery } from "react-responsive";
-import MobileUsers from "../Components/MobileUsers";
+import MobileUsers from "./Components/MobileUsers";
 
  export default function Page () {
 
