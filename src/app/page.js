@@ -13,6 +13,8 @@ import Contact from "../app/Components/Landing Page/Contact";
 import Footer from "../app/Components/Footer";
 import { useCookies } from "react-cookie";
 import Hero from "../app/Components/Landing Page/Hero";
+import { useMediaQuery } from "react-responsive";
+import MobileUsers from "../Components/MobileUsers";
 
  export default function Page () {
 
@@ -20,7 +22,10 @@ import Hero from "../app/Components/Landing Page/Hero";
 
   const authToken = cookies.AuthToken;
 
-  return (
+   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  return isTabletOrMobile ? (
+    <MobileUsers />
+  ) : (
     <>
       <Navbar authToken={authToken} minimal={false} />
       <Hero />
