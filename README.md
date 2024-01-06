@@ -1,3 +1,5 @@
+ ![App Screenshot](https://imgur.com/yPgUFfz.png)
+
 # 🐕 Breedit
 
  Connect with fellow pet lovers through swipes, similar to Tinder, and Chat with them. Donate or adopt pets effortlessly. Meet enthusiasts and share your passion for pets!
