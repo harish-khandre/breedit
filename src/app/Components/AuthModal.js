@@ -34,12 +34,12 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       };
 
       const response = await fetch(
-        `https://breedit.vercel.app/api/${isSignUp ? "register" : "login"}`,
+        `http://localhost:3000/api/${isSignUp ? "register" : "login"}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
-        }
+        },
       );
       const statusCode = response.status;
       if (statusCode === 201) {
@@ -69,6 +69,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
   return (
     <>
       <div className="auth-modal authBlogCard lg:mt-1 md:top-16 bg-[#c88572]  ">
+        {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
         <div className="close-icon cursor-pointer" onClick={handleClick}>
           <CloseCircleOutlined
             style={{ fontSize: "125%" }}

@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import Loading from "@/app/loading";
 import { LoadingOutlined } from "@ant-design/icons";
+import axios from "axios";
+import dynamic from "next/dynamic";
+import React from "react";
+import { useEffect, useState } from "react";
+import { Suspense } from "react";
 const ChatInput = dynamic(() => import("./ChatInput"), {
   loading: () => <LoadingOutlined className="animate-spin h-5 w-5" />,
 });
@@ -22,15 +22,12 @@ const ChatDisplay = ({ user, clickedUser }) => {
 
   const getUsersMessages = async () => {
     try {
-      const response = await axios.get(
-        "https://breedit.vercel.app/api/messages",
-        {
-          params: { userId: userId, correspondingUserId: clickedUserId },
-          next: {
-            revalidate: 0,
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:3000/api/messages", {
+        params: { userId: userId, correspondingUserId: clickedUserId },
+        next: {
+          revalidate: 0,
+        },
+      });
       setUsersMessages(response.data);
     } catch (error) {
       console.log(error);
@@ -38,15 +35,12 @@ const ChatDisplay = ({ user, clickedUser }) => {
   };
   const getClickedUsersMessages = async () => {
     try {
-      const response = await axios.get(
-        "https://breedit.vercel.app/api/messages",
-        {
-          params: { userId: clickedUserId, correspondingUserId: userId },
-          next: {
-            revalidate: 0,
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:3000/api/messages", {
+        params: { userId: clickedUserId, correspondingUserId: userId },
+        next: {
+          revalidate: 0,
+        },
+      });
       setClickedUsersMessages(response.data);
     } catch (error) {
       console.log(error);
@@ -54,12 +48,22 @@ const ChatDisplay = ({ user, clickedUser }) => {
   };
 
   useEffect(() => {
+    // Bind to the 'new-message' event on component mount
+    channel.bind("new-message", (data) => {
+      setMessages((prevMessages) => [...prevMessages, data.message]);
+    });
+
     getUsersMessages();
     getClickedUsersMessages();
+    // Cleanup function to unbind on unmount
+    return () => {
+      channel.unbind("new-message");
+    };
   });
 
   const messages = [];
 
+  // biome-ignore lint/complexity/noForEach: <explanation>
   usersMessages?.forEach((message) => {
     const formattedMessage = {};
     formattedMessage["name"] = user?.pet_name;
@@ -69,6 +73,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
     messages.push(formattedMessage);
   });
 
+  // biome-ignore lint/complexity/noForEach: <explanation>
   clickedUsersMessages?.forEach((message) => {
     const formattedMessage = {};
     formattedMessage["name"] = clickedUser?.pet_name;
@@ -79,7 +84,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
   });
 
   const desecendingOrderMessages = messages?.sort((a, b) =>
-    a.timestamp.localeCompare(b.timestamp)
+    a.timestamp.localeCompare(b.timestamp),
   );
 
   return (

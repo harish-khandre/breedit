@@ -13,10 +13,13 @@
     "@react-spring/web": "^9.7.3",
     "axios": "^1.6.0",
     "bcryptjs": "^2.4.3",
+    "clsx": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.2.0",
     "next": "latest",
     "nextjs-toploader": "^1.5.3",
+    "pusher": "^5.2.0",
+    "pusher-js": "^8.4.0-rc2",
     "react": "^18",
     "react-cookie": "^6.1.1",
     "react-dom": "^18",
@@ -24,6 +27,7 @@
     "react-material-ui-carousel": "^3.4.2",
     "react-responsive": "^9.0.2",
     "react-tinder-card": "^1.6.3",
+    "tailwind-merge": "^2.2.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 
 const ChatInput = ({
   user,
@@ -22,7 +22,7 @@ const ChatInput = ({
     };
 
     try {
-      await axios.post("https://breedit.vercel.app/api/messages", {
+      await axios.post("http://localhost:3000/api/messages", {
         message,
       });
       getUsersMessages();
@@ -41,6 +41,7 @@ const ChatInput = ({
         onChange={(e) => setTextArea(e.target.value)}
       />
       <div className="flex justify-end items-center bg-[#f7ebdb]">
+        {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
         <button
           className="button tracking-wide text-center mt-3 m-2 justify-self-center"
           onClick={addMessage}

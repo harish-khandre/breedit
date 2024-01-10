@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-
 import { MongoClient } from "mongodb";
 
 export async function GET(req) {
@@ -8,6 +7,7 @@ export async function GET(req) {
   const correspondingUserId = url.searchParams.get("correspondingUserId");
   const uri = process.env.URI;
   let client;
+
   try {
     client = new MongoClient(uri);
     const db = client.db("App-data");
@@ -22,7 +22,7 @@ export async function GET(req) {
     console.error(e);
     return NextResponse.json(
       { message: "messages api error" },
-      { status: 400 }
+      { status: 400 },
     );
   } finally {
     await client.close();
@@ -43,7 +43,7 @@ export async function POST(req) {
     console.error(e);
     return NextResponse.json(
       { message: "messages api error" },
-      { status: 400 }
+      { status: 400 },
     );
   } finally {
     await client.close();
