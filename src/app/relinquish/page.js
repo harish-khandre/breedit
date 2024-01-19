@@ -60,7 +60,7 @@ const FormPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/submit",
+        process.env.API_URL + "/api/submit",
         formData,
       );
       console.log(response);

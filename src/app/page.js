@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Fade from "../app/Components/Fade";
@@ -14,44 +14,43 @@ import Footer from "../app/Components/Footer";
 import { useCookies } from "react-cookie";
 import Hero from "../app/Components/Landing Page/Hero";
 import MobileUsers from "./Components/MobileUsers";
+import { useMediaQuery } from "react-responsive";
 
- export default function Page () {
-
+export default function Page() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const authToken = cookies.AuthToken;
- const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
- return isTabletOrMobile ? (
-   <MobileUsers />
- ) : (
-   <>
-     <Navbar authToken={authToken} minimal={false} />
-     <Hero />
-     <Fade delay={500}>
-       <Content />
-     </Fade>
-     <Fade delay={500}>
-       <Features />
-     </Fade>
-     <Fade delay={500}>
-       <CTA />
-     </Fade>
-     <Fade delay={500}>
-       <Gallery />
-     </Fade>
-     <Fade delay={500}>
-       <Blog />
-     </Fade>
-     <Fade delay={500}>
-       <Testimonials />
-     </Fade>
-     <Fade delay={500}>
-       <Contact />
-     </Fade>
-     <Fade delay={500}>
-       <Footer />
-     </Fade>
-   </>
- );
-};
-
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  return isTabletOrMobile ? (
+    <MobileUsers />
+  ) : (
+    <>
+      <Navbar authToken={authToken} minimal={false} />
+      <Hero />
+      <Fade delay={500}>
+        <Content />
+      </Fade>
+      <Fade delay={500}>
+        <Features />
+      </Fade>
+      <Fade delay={500}>
+        <CTA />
+      </Fade>
+      <Fade delay={500}>
+        <Gallery />
+      </Fade>
+      <Fade delay={500}>
+        <Blog />
+      </Fade>
+      <Fade delay={500}>
+        <Testimonials />
+      </Fade>
+      <Fade delay={500}>
+        <Contact />
+      </Fade>
+      <Fade delay={500}>
+        <Footer />
+      </Fade>
+    </>
+  );
+}

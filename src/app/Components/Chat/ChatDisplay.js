@@ -22,7 +22,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
 
   const getUsersMessages = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/messages", {
+      const response = await axios.get(process.env.API_URL + "/api/messages", {
         params: { userId: userId, correspondingUserId: clickedUserId },
         next: {
           revalidate: 0,
@@ -35,7 +35,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
   };
   const getClickedUsersMessages = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/messages", {
+      const response = await axios.get(process.env.API_URL + "/api/messages", {
         params: { userId: clickedUserId, correspondingUserId: userId },
         next: {
           revalidate: 0,

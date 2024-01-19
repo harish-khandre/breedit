@@ -38,7 +38,7 @@ function OnBoarding() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.put("http://localhost:3000/api/user", {
+      const response = await axios.put(process.env.API_URL + "/api/user", {
         formData,
       });
 

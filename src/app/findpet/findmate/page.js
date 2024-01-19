@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/user", {
+      const response = await axios.get(process.env.API_URL + "/api/user", {
         params: { userId },
         next: {
           revalidate: 10,
@@ -42,7 +42,7 @@ const Dashboard = () => {
         return;
       } else {
         const response = await axios.get(
-          "http://localhost:3000/api/gendered-users",
+          process.env.API_URL + "/api/gendered-users",
           {
             params: { gender: user?.gender_interest },
             next: {
@@ -69,7 +69,7 @@ const Dashboard = () => {
 
   const updateMatches = async (matchedUserId) => {
     try {
-      await axios.put("http://localhost:3000/api/addmatch", {
+      await axios.put(process.env.API_URL + "/api/addmatch", {
         userId,
         matchedUserId,
       });

@@ -1,15 +1,15 @@
 "use client";
 
+import { RightCircleOutlined } from "@ant-design/icons";
+import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
 import React, { cache } from "react";
-import Navbar from "../Components/Navbar";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import axios from "axios";
-import Link from "next/link";
-import { RightCircleOutlined } from "@ant-design/icons";
-import Image from "next/image";
-import MobileUsers from "../Components/MobileUsers";
 import { useMediaQuery } from "react-responsive";
+import MobileUsers from "../Components/MobileUsers";
+import Navbar from "../Components/Navbar";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -19,7 +19,7 @@ const Profile = () => {
 
   const getUser = cache(async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/user", {
+      const response = await axios.get(process.env.API_URL + "/api/user", {
         params: { userId },
       });
       setUser(response.data);
@@ -52,12 +52,12 @@ const Profile = () => {
                     style={{
                       backgroundImage: `url(${user.url})`,
                     }}
-                  ></div>
+                  />
 
                   <h1 className="text-3xl font-bold pt-8 lg:pt-0">
                     {user.pet_name}
                   </h1>
-                  <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
+                  <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25" />
                   <p className="pt-4 text-xl font-bold flex items-center justify-center lg:justify-start">
                     <RightCircleOutlined style={{ color: "green" }} /> &emsp;
                     <span className="text-lg font-medium ">

@@ -16,7 +16,7 @@ const ChatComponent = () => {
 
   const getUser = cache(async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/user", {
+      const response = await axios.get(process.env.API_URL + "/api/user", {
         params: { userId },
       });
       setUser(response.data);
@@ -27,7 +27,7 @@ const ChatComponent = () => {
   const getGenderedUsers = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/gendered-users",
+        process.env.API_URL + "/api/gendered-users",
         {
           params: { gender: user?.gender_interest },
           next: {
