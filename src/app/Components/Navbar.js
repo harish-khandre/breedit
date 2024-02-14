@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import Link from "next/link";
+import Image from "next/image";
 
 import dynamic from "next/dynamic";
 import { LoadingOutlined } from "@ant-design/icons";
@@ -49,7 +50,14 @@ const Nav = ({ minimal }) => {
           <span className="text-3xl text-[#c88572] mr-3 pt-2">
             <ion-icon name="logo-ionic"></ion-icon>
           </span>
-          <Link href="/">BREEDIT</Link>
+          <Link href="/">
+            <Image
+              src="https://imgur.com/hgn8JNF.png"
+              alt="logo"
+              height={50}
+              width={50}
+            />
+          </Link>
         </div>
 
         <div

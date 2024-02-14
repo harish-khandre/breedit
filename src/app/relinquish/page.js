@@ -47,7 +47,6 @@ const FormPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate the required fields before submission
     if (
       !formData.name ||
       !formData.age ||
@@ -61,11 +60,9 @@ const FormPage = () => {
     try {
       const response = await axios.post(
         "https://breedit.vercel.app/api/submit",
-        formData
+        formData,
       );
       console.log(response);
-      // You can handle the response here if needed
-      // Optionally, you can reset the form after successful submission
       setFormData({
         name: "",
         age: "",
@@ -82,7 +79,7 @@ const FormPage = () => {
     } catch (error) {
       console.log(error);
       toast.error(
-        "An error occurred while submitting the pet. Please try again." + error
+        "An error occurred while submitting the pet. Please try again." + error,
       );
     }
   };
@@ -107,13 +104,6 @@ const FormPage = () => {
               className=""
               required
             />
-            {/* <label
-            for="name"
-            className="absolute left-0 top-1 text-[#505f2f] cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#f7ebdb] transition-all"
-          >
-            {" "}
-            Name{" "}
-          </label> */}
           </div>
           <div className="flex flex-col relative">
             <TextField

@@ -1,21 +1,19 @@
 import { NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
 
-
 export async function PUT(req) {
-    const {formData} = await req.json();
-     const uri = process.env.URI;
-     let client;
+  const { formData } = await req.json();
+  const uri = process.env.URI;
+  let client;
   try {
-        client = new MongoClient(uri);
+    client = new MongoClient(uri);
 
     const db = client.db("App-data");
 
     const users = await db.collection("Users");
 
-     const query = { user_id: formData.user_id };
+    const query = { user_id: formData.user_id };
 
-     
     const updateDocument = {
       $set: {
         first_name: formData.first_name,
@@ -35,15 +33,15 @@ export async function PUT(req) {
     return NextResponse.json(insertedUser);
   } catch (e) {
     console.error(e);
-     return NextResponse.json(
-       {
-         error: " Updated User API Error  ",
-       },
-       {
-         status: 500,
-       }
-     );
-  }finally {
+    return NextResponse.json(
+      {
+        error: " Updated User API Error  ",
+      },
+      {
+        status: 500,
+      },
+    );
+  } finally {
     await client.close();
   }
 }
