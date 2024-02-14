@@ -50,7 +50,11 @@ const Nav = ({ minimal }) => {
           <span className="text-3xl text-[#c88572] mr-3 pt-2">
             <ion-icon name="logo-ionic"></ion-icon>
           </span>
+<<<<<<< HEAD
           <Link href="/">
+=======
+           <Link href="/">
+>>>>>>> 6f9fbd75e8cfa78107d7c5b7387740c36b51fd34
             <Image
               src="https://imgur.com/hgn8JNF.png"
               alt="logo"
@@ -58,6 +62,10 @@ const Nav = ({ minimal }) => {
               width={50}
             />
           </Link>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6f9fbd75e8cfa78107d7c5b7387740c36b51fd34
         </div>
 
         <div
