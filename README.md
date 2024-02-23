@@ -4,7 +4,7 @@
 
  Connect with fellow pet lovers through swipes, similar to Tinder, and Chat with them. Donate or adopt pets effortlessly. Meet enthusiasts and share your passion for pets!
  
-Live site: https://breedit.vercel.app/
+Live site: https://www.breedit.co.in/
 
 ## Features
 
