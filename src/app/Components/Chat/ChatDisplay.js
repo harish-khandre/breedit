@@ -23,7 +23,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
   const getUsersMessages = async () => {
     try {
       const response = await axios.get(
-        "https://breedit.vercel.app/api/messages",
+        "https://www.breedit.co.in/api/messages",
         {
           params: { userId: userId, correspondingUserId: clickedUserId },
           next: {
@@ -39,7 +39,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
   const getClickedUsersMessages = async () => {
     try {
       const response = await axios.get(
-        "https://breedit.vercel.app/api/messages",
+        "https://www.breedit.co.in/api/messages",
         {
           params: { userId: clickedUserId, correspondingUserId: userId },
           next: {

@@ -38,7 +38,7 @@ function OnBoarding() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.put("https://breedit.vercel.app/api/user", {
+      const response = await axios.put("https://www.breedit.co.in/api/user", {
         formData,
       });
 

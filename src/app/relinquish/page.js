@@ -59,7 +59,7 @@ const FormPage = () => {
 
     try {
       const response = await axios.post(
-        "https://breedit.vercel.app/api/submit",
+        "https://www.breedit.co.in/api/submit",
         formData,
       );
       console.log(response);

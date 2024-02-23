@@ -34,7 +34,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       };
 
       const response = await fetch(
-        `https://breedit.vercel.app/api/${isSignUp ? "register" : "login"}`,
+        `https://www.breedit.co.in/api/${isSignUp ? "register" : "login"}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

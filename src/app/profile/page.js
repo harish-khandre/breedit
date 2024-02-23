@@ -19,7 +19,7 @@ const Profile = () => {
 
   const getUser = cache(async () => {
     try {
-      const response = await axios.get("https://breedit.vercel.app/api/user", {
+      const response = await axios.get("https://www.breedit.co.in/api/user", {
         params: { userId },
       });
       setUser(response.data);

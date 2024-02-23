@@ -22,7 +22,7 @@ const ChatInput = ({
     };
 
     try {
-      await axios.post("https://breedit.vercel.app/api/messages", {
+      await axios.post("https://www.breedit.co.in/api/messages", {
         message,
       });
       getUsersMessages();

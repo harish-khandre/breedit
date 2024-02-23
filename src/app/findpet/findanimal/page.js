@@ -22,7 +22,7 @@ export default function FindAnimal() {
   const fetchDonatedPets = async () => {
     try {
       const response = await axios.get(
-        "https://breedit.vercel.app/api/donate",
+        "https://www.breedit.co.in/api/donate",
         {
           next: {
             revalidate: 60,

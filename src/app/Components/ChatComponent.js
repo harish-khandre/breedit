@@ -16,7 +16,7 @@ const ChatComponent = () => {
 
   const getUser = cache(async () => {
     try {
-      const response = await axios.get("https://breedit.vercel.app/api/user", {
+      const response = await axios.get("https://www.breedit.co.in/api/user", {
         params: { userId },
       });
       setUser(response.data);
@@ -27,7 +27,7 @@ const ChatComponent = () => {
   const getGenderedUsers = async () => {
     try {
       const response = await axios.get(
-        "https://breedit.vercel.app/api/gendered-users",
+        "https://www.breedit.co.in/api/gendered-users",
         {
           params: { gender: user?.gender_interest },
           next: {
