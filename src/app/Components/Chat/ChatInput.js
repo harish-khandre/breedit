@@ -22,7 +22,7 @@ const ChatInput = ({
     };
 
     try {
-      await axios.post(process.env.API_URL + "/api/messages", {
+      await axios.post("/api/messages", {
         message,
       });
       getUsersMessages();

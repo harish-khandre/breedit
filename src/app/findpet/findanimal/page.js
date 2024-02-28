@@ -21,7 +21,7 @@ export default function FindAnimal() {
 
   const fetchDonatedPets = async () => {
     try {
-      const response = await axios.get(process.env.API_URL + "/api/donate", {
+      const response = await axios.get("/api/donate", {
         next: {
           revalidate: 60,
         },

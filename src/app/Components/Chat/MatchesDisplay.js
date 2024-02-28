@@ -14,7 +14,7 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
 
   const getMatches = async () => {
     try {
-      const response = await axios.get(process.env.API_URL + "/api/users", {
+      const response = await axios.get("/api/users", {
         params: { userIds: JSON.stringify(matchedUserIds) },
         next: {
           revalidate: 10,
@@ -34,7 +34,7 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
   if (matchedProfiles && matchedProfiles.length > 0) {
     const filteredMatchedProfiles = matchedProfiles.filter((matchedProfile) => {
       return matchedProfile.matches.some(
-        (profile) => profile.user_id === userId
+        (profile) => profile.user_id === userId,
       );
     });
 

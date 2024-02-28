@@ -10,8 +10,6 @@ export async function GET(req) {
   if (userId === null || userId === undefined || !userId) {
     return NextResponse.send({ message: "invalid userId ." }, { status: 400 });
   }
-
-  // Get the user from the database.
   const uri = process.env.URI;
   let client;
   try {
@@ -28,7 +26,7 @@ export async function GET(req) {
         { message: "User not found." },
         {
           status: 404,
-        }
+        },
       );
     }
 
@@ -37,7 +35,7 @@ export async function GET(req) {
     console.log(error);
     return NextResponse.json(
       { message: "not working at user get function" },
-      { status: 400 }
+      { status: 400 },
     );
   } finally {
     await client.close();
@@ -62,7 +60,7 @@ export async function PUT(req) {
         breed: formData.breed,
         gender_identity: formData.gender_identity,
         gender_interest: formData.gender_interest,
-        url: formData.url,
+        url: formData.img,
         about: formData.about,
         matches: formData.matches,
       },
@@ -75,7 +73,7 @@ export async function PUT(req) {
     console.log(error);
     return NextResponse.json(
       { message: "not working at user put function" },
-      { status: 400 }
+      { status: 400 },
     );
   } finally {
     await client.close();

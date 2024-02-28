@@ -19,7 +19,7 @@ const Profile = () => {
 
   const getUser = cache(async () => {
     try {
-      const response = await axios.get(process.env.API_URL + "/api/user", {
+      const response = await axios.get("/api/user", {
         params: { userId },
       });
       setUser(response.data);

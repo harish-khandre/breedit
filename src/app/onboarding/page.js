@@ -5,11 +5,10 @@ import Navbar from "../Components/Navbar";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { signedUrl } from "./action.js";
 
 function OnBoarding() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-  const [img, setImg] = useState(null);
-  const [fileUrl, setFileUrl] = useState(null);
   const [formData, setFormData] = useState({
     user_id: cookies.UserId,
     first_name: "",
@@ -22,29 +21,21 @@ function OnBoarding() {
     breed: "",
     matches: [],
   });
-
+  const [file, setFile] = useState(null);
+  const [fileUrl, setFileUrl] = useState(null);
   const router = useRouter();
 
-  const handleFileChange = async (e) => {
-    if (!e.target.files) return;
-    const file = e.target.files[0];
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    setFile(file);
     if (fileUrl) {
       URL.revokeObjectURL(fileUrl);
     }
-    setFileUrl(URL.createObjectURL(file));
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const response = await fetch("/api/s3", {
-        method: "POST",
-        body: formData,
-      });
-      setImg(response.fileName);
-      toast.success("Image uploaded successfully!");
-    } catch (error) {
-      setError(error.message);
-      toast.error("Something went wrong!");
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setFileUrl(url);
+    } else {
+      setFileUrl(null);
     }
   };
 
@@ -61,8 +52,17 @@ function OnBoarding() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const signedImgUrl = await signedUrl();
+    if (signedImgUrl.failure) {
+      return alert("Failed to get signed url");
+    }
+    const img = signedImgUrl.success.url;
+    const formData = new FormData();
+    formData.append("img", img);
+
     try {
-      const response = await axios.put(process.env.API_URL + "/api/user", {
+      const response = await axios.put("/api/user", {
         formData,
       });
 
@@ -70,23 +70,6 @@ function OnBoarding() {
       if (success) router.push("/findpet");
     } catch (error) {
       console.log(error);
-    }
-    // Perform form validation here
-    const { first_name, pet_name, age, gender_identity, about, url, breed } =
-      formData;
-    if (
-      first_name === "" ||
-      pet_name === "" ||
-      age === "" ||
-      gender_identity === "" ||
-      about === "" ||
-      url === "" ||
-      breed === ""
-    ) {
-      alert("Please fill in all fields.");
-    } else {
-      // Perform form submission logic here
-      console.log("Form submitted!");
     }
   };
 
@@ -210,21 +193,18 @@ function OnBoarding() {
             <label htmlFor="url">Profile Photo URL </label>
             <input
               type="file"
-              name="url"
-              id="url"
+              name="media"
               onChange={handleFileChange}
               required={true}
               className="border-b-2 text-[#f7ebdb] bg-[#f7ebdb] focus:outline-none focus:border-[#f7ebdb] focus:ring-1 focus:ring-[#505f2f] rounded-2xl  border-t-2 border-l-4 border-[#505f2f]"
-              value={formData.url}
-            />{" "}
+            />
             <div className="photo-container">
               {fileUrl && file && <img src={fileUrl} alt="pfp" />}
-            </div>{" "}
+            </div>
           </section>
         </form>
       </div>
     </>
   );
 }
-
 export default OnBoarding;

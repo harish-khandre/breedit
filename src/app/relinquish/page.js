@@ -59,10 +59,7 @@ const FormPage = () => {
     }
 
     try {
-      const response = await axios.post(
-        process.env.API_URL + "/api/submit",
-        formData,
-      );
+      const response = await axios.post("/api/submit", formData);
       console.log(response);
       // You can handle the response here if needed
       // Optionally, you can reset the form after successful submission
