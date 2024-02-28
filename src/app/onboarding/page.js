@@ -8,7 +8,8 @@ import { useRouter } from "next/navigation";
 
 function OnBoarding() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-
+  const [img, setImg] = useState(null);
+  const [fileUrl, setFileUrl] = useState(null);
   const [formData, setFormData] = useState({
     user_id: cookies.UserId,
     first_name: "",
@@ -23,6 +24,29 @@ function OnBoarding() {
   });
 
   const router = useRouter();
+
+  const handleFileChange = async (e) => {
+    if (!e.target.files) return;
+    const file = e.target.files[0];
+    if (fileUrl) {
+      URL.revokeObjectURL(fileUrl);
+    }
+    setFileUrl(URL.createObjectURL(file));
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("/api/s3", {
+        method: "POST",
+        body: formData,
+      });
+      setImg(response.fileName);
+      toast.success("Image uploaded successfully!");
+    } catch (error) {
+      setError(error.message);
+      toast.error("Something went wrong!");
+    }
+  };
 
   const handleChange = (e) => {
     console.log("e", e);
@@ -185,17 +209,17 @@ function OnBoarding() {
           <section className="">
             <label htmlFor="url">Profile Photo URL </label>
             <input
-              type="url"
+              type="file"
               name="url"
               id="url"
-              onChange={handleChange}
+              onChange={handleFileChange}
               required={true}
               className="border-b-2 text-[#f7ebdb] bg-[#f7ebdb] focus:outline-none focus:border-[#f7ebdb] focus:ring-1 focus:ring-[#505f2f] rounded-2xl  border-t-2 border-l-4 border-[#505f2f]"
               value={formData.url}
-            />
+            />{" "}
             <div className="photo-container">
-              {formData.url && <img src={formData.url} alt="pfp" />}
-            </div>
+              {fileUrl && file && <img src={fileUrl} alt="pfp" />}
+            </div>{" "}
           </section>
         </form>
       </div>
