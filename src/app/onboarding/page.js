@@ -5,9 +5,8 @@ import Navbar from "../Components/Navbar";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { signedUrl } from "./action.js";
 
-function OnBoarding() {
+export default function OnBoarding() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [formData, setFormData] = useState({
     user_id: cookies.UserId,
@@ -17,25 +16,48 @@ function OnBoarding() {
     gender_identity: "",
     gender_interest: "",
     about: "",
-    url: "",
     breed: "",
     matches: [],
   });
   const [file, setFile] = useState(null);
   const [fileUrl, setFileUrl] = useState(null);
+  const [uploading, setUploading] = useState(false);
   const router = useRouter();
 
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
     setFile(file);
+
     if (fileUrl) {
       URL.revokeObjectURL(fileUrl);
     }
+
     if (file) {
-      const url = URL.createObjectURL(file);
-      setFileUrl(url);
+      const objectUrl = URL.createObjectURL(file);
+      setFileUrl(objectUrl);
     } else {
       setFileUrl(null);
+    }
+  };
+
+  const uploadFile = async (e) => {
+    e.preventDefault();
+    if (!file) return;
+    setUploading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("user_id", cookies.UserId);
+    try {
+      const response = await fetch("/api/s3", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      console.log(data.status);
+      setUploading(false);
+    } catch (error) {
+      console.log(error);
+      setUploading(false);
     }
   };
 
@@ -49,18 +71,8 @@ function OnBoarding() {
       [name]: value,
     }));
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const signedImgUrl = await signedUrl();
-    if (signedImgUrl.failure) {
-      return alert("Failed to get signed url");
-    }
-    const img = signedImgUrl.success.url;
-    const formData = new FormData();
-    formData.append("img", img);
-
     try {
       const response = await axios.put("/api/user", {
         formData,
@@ -70,6 +82,22 @@ function OnBoarding() {
       if (success) router.push("/findpet");
     } catch (error) {
       console.log(error);
+    }
+    // Perform form validation here
+    const { first_name, pet_name, age, gender_identity, about, breed } =
+      formData;
+    if (
+      first_name === "" ||
+      pet_name === "" ||
+      age === "" ||
+      gender_identity === "" ||
+      about === "" ||
+      breed === ""
+    ) {
+      alert("Please fill in all fields.");
+    } else {
+      // Perform form submission logic here
+      console.log("Form submitted!");
     }
   };
 
@@ -81,9 +109,46 @@ function OnBoarding() {
           CREATE ACCOUNT
         </h2>
         <form
+          onSubmit={uploadFile}
+          className="flex flex-col justify-center items-center gap-4 "
+        >
+          <label>Profile Photo URL </label>
+          <input
+            type="file"
+            onChange={handleFileChange}
+            required={true}
+            accept="image/*"
+            className="border-b-2 text-[#f7ebdb] bg-[#f7ebdb] focus:outline-none focus:border-[#f7ebdb] focus:ring-1 focus:ring-[#505f2f] rounded-2xl  border-t-2 border-l-4 border-[#505f2f]"
+          />
+          <div className="photo-container">
+            {fileUrl && file && (
+              <img src={fileUrl} className="w-60 m-4" alt="pfp" />
+            )}
+          </div>
+          <div className="flex gap-4">
+            <button
+              type="submit"
+              disabled={!file || uploading}
+              className="button"
+            >
+              {uploading ? "Uploading..." : "Upload"}
+            </button>
+            <button
+              type="button"
+              className="button"
+              onClick={() => {
+                setFile(null);
+                setFileUrl(null);
+              }}
+            >
+              Remove
+            </button>
+          </div>
+        </form>
+        <form
           onSubmit={handleSubmit}
           className=""
-          enctype="multipart/form-data"
+          encType="multipart/form-data"
         >
           <section>
             <label htmlFor="first_name">Your Name</label>
@@ -189,22 +254,8 @@ function OnBoarding() {
             />
             <input type="submit" className="button" />
           </section>
-          <section className="">
-            <label htmlFor="url">Profile Photo URL </label>
-            <input
-              type="file"
-              name="media"
-              onChange={handleFileChange}
-              required={true}
-              className="border-b-2 text-[#f7ebdb] bg-[#f7ebdb] focus:outline-none focus:border-[#f7ebdb] focus:ring-1 focus:ring-[#505f2f] rounded-2xl  border-t-2 border-l-4 border-[#505f2f]"
-            />
-            <div className="photo-container">
-              {fileUrl && file && <img src={fileUrl} alt="pfp" />}
-            </div>
-          </section>
         </form>
       </div>
     </>
   );
 }
-export default OnBoarding;

@@ -60,7 +60,6 @@ export async function PUT(req) {
         breed: formData.breed,
         gender_identity: formData.gender_identity,
         gender_interest: formData.gender_interest,
-        url: formData.img,
         about: formData.about,
         matches: formData.matches,
       },

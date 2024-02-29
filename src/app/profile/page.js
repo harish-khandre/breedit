@@ -50,7 +50,7 @@ const Profile = () => {
                   <div
                     className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center "
                     style={{
-                      backgroundImage: `url(${user.url})`,
+                      backgroundImage: `url(${user.img})`,
                     }}
                   />
 
@@ -99,7 +99,7 @@ const Profile = () => {
               </div>
 
               <div className="w-full  lg:w-2/5">
-                <Image
+                <img
                   src={user.url}
                   alt="pfp"
                   width={1000}
