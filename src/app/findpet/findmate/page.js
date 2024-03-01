@@ -12,7 +12,7 @@ const ChatContainer = dynamic(
   () => import("../../Components/Chat/ChatContainer"),
   {
     loading: () => <LoadingOutlined className="animate-spin h-5 w-5" />,
-  }
+  },
 );
 
 const Dashboard = () => {
@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   const getUser = async () => {
     try {
-      const response = await axios.get("https://www.breedit.co.in/api/user", {
+      const response = await axios.get("/api/user", {
         params: { userId },
         next: {
           revalidate: 10,
@@ -41,15 +41,12 @@ const Dashboard = () => {
       if (user?.gender_interest === null || undefined) {
         return;
       } else {
-        const response = await axios.get(
-          "https://www.breedit.co.in/api/gendered-users",
-          {
-            params: { gender: user?.gender_interest },
-            next: {
-              revalidate: 10,
-            },
-          }
-        );
+        const response = await axios.get(" /api/gendered-users", {
+          params: { gender: user?.gender_interest },
+          next: {
+            revalidate: 10,
+          },
+        });
         setGenderedUsers(response.data);
       }
     } catch (error) {
@@ -69,7 +66,7 @@ const Dashboard = () => {
 
   const updateMatches = async (matchedUserId) => {
     try {
-      await axios.put("https://www.breedit.co.in/api/addmatch", {
+      await axios.put(" /api/addmatch", {
         userId,
         matchedUserId,
       });
@@ -134,7 +131,7 @@ const Dashboard = () => {
                         </h3>
                       </div>
                     </TinderCard>
-                  ) : null // Return null if genderedUser or user_id is missing
+                  ) : null, // Return null if genderedUser or user_id is missing
               )}
             </div>
           </div>

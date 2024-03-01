@@ -21,14 +21,11 @@ export default function FindAnimal() {
 
   const fetchDonatedPets = async () => {
     try {
-      const response = await axios.get(
-        "https://www.breedit.co.in/api/donate",
-        {
-          next: {
-            revalidate: 60,
-          },
-        }
-      );
+      const response = await axios.get("/api/donate", {
+        next: {
+          revalidate: 60,
+        },
+      });
       setDonatedPets(response.data);
     } catch (error) {
       console.log(error);

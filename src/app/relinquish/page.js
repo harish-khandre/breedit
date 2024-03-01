@@ -58,10 +58,7 @@ const FormPage = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://www.breedit.co.in/api/submit",
-        formData,
-      );
+      const response = await axios.post("/api/submit", formData);
       console.log(response);
       setFormData({
         name: "",

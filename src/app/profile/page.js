@@ -19,7 +19,7 @@ const Profile = () => {
 
   const getUser = cache(async () => {
     try {
-      const response = await axios.get("https://www.breedit.co.in/api/user", {
+      const response = await axios.get("/api/user", {
         params: { userId },
       });
       setUser(response.data);
