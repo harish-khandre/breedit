@@ -48,7 +48,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       }
     } catch (error) {
       setError(error.response?.data?.error || "Something went wrong");
-      toast.error("Something went wrong, Check your Password");
+      toast.error(error);
       console.error(error);
       setIsLoading(false);
     }
