@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import Link from "next/link";
+import Image from "next/image";
 
 import dynamic from "next/dynamic";
 import { LoadingOutlined } from "@ant-design/icons";
