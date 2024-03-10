@@ -7,7 +7,7 @@ import Navbar from "../../Components/Navbar";
 import { useCookies } from "react-cookie";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
-import MobileUsers from "@/app/Components/MobileUsers";
+import MobileUsers from "../../Components/MobileUsers";
 
 // export const revalidate = 60;
 

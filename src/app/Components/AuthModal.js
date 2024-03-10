@@ -41,10 +41,10 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       const statusCode = response.status;
       if (statusCode === 201) {
         const responseData = await response.json();
-        setCookie("UserId", responseData.userId); // Access the 'userId' property
+        setCookie("UserId", responseData.userId); 
         setCookie("AuthToken", responseData.token);
 
-        router.push(isSignUp ? "/onboarding" : "/findpet");
+        router.push(isSignUp ? "/onboard" : "/findpet");
       }
     } catch (error) {
       setError(error.response?.data?.error || "Something went wrong");
@@ -53,11 +53,6 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       setIsLoading(false);
     }
   };
-  //  useEffect(() => {
-  //    if (isLoading) {
-  //      setIsLoading(false);
-  //    }
-  //  }, [isLoading]);
 
   const handleClick = () => {
     setShowModal(false);

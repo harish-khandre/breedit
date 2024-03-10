@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import Loading from "@/app/loading";
+import Loading from "../../loading";
 import { LoadingOutlined } from "@ant-design/icons";
 const ChatInput = dynamic(() => import("./ChatInput"), {
   loading: () => <LoadingOutlined className="animate-spin h-5 w-5" />,

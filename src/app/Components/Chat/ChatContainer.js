@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import Navbar from "../Navbar"
+import Navbar from "../Navbar";
 import { Suspense } from "react";
-import Loading from "@/app/loading";
+import Loading from "../../loading";
 import { LoadingOutlined } from "@ant-design/icons";
 const ChatDisplay = dynamic(() => import("./ChatDisplay"), {
   loading: () => <LoadingOutlined className="animate-spin h-5 w-5" />,

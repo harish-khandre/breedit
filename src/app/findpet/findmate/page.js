@@ -7,7 +7,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import { LoadingOutlined } from "@ant-design/icons";
-import MobileUsers from "@/app/Components/MobileUsers";
+import MobileUsers from "../../Components/MobileUsers";
 const ChatContainer = dynamic(
   () => import("../../Components/Chat/ChatContainer"),
   {
