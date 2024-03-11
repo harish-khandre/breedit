@@ -185,7 +185,7 @@ const OnBoard = () => {
             </div>
             <div className="flex flex-col space-y-1.5">
               <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Image of the person
+                Image of the pet
               </label>
               <input
                 type="file"
