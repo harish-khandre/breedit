@@ -1,0 +1,39 @@
+version: "3.9" # Use a compatible Docker Compose version
+
+services:
+  # Next.js application
+  frontend:
+    build: .
+    ports:
+      - "3000:3000" # Expose Next.js development server port
+    volumes:
+      - ./:/app:cached # Mount project directory for hot reloading
+      - node_modules:/app/node_modules # Cache node_modules to speed up builds
+    environment:
+      - URI=mongodb://mongo:27017/your_database_name # Replace with your MongoDB connection string
+      - JWT_SECRET=your_jwt_secret # Replace with your JWT secret
+      - AWS_ACCESS_KEY_ID=your_aws_access_key_id # Replace with your AWS credentials (optional)
+      - AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key # Replace with your AWS credentials (optional)
+      - AWS_REGION=your_aws_region # Replace with your AWS region (optional)
+    depends_on:
+      - mongo
+
+  # MongoDB database
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017" # Expose MongoDB port
+    volumes:
+      - mongo-data:/data/db # Persist MongoDB data
+
+  # Optional: AWS S3 integration (assuming a separate service)
+  # If using AWS SDK for uploads, configure environment variables accordingly
+  # s3:
+  #   image: your_aws_s3_image  # Replace with your chosen S3 image
+  #   environment:
+  #     - AWS_ACCESS_KEY_ID=your_aws_access_key_id  # Replace with your AWS credentials
+  #     - AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key  # Replace with your AWS credentials
+  #     - AWS_REGION=your_aws_region  # Replace with your AWS region
+
+volumes:
+  mongo-data: # Persistent volume for MongoDB data
