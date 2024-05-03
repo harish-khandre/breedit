@@ -52,7 +52,6 @@ export async function POST(req) {
   const gender_identity = formData.get("gender_identity");
   const gender_interest = formData.get("gender_interest");
   const about = formData.get("about");
-  // const matches = formData.get("matches");
 
   if (!file) {
     return NextResponse.json({ message: "File not found" }, { status: 400 });
