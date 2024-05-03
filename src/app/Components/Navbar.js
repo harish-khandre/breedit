@@ -51,12 +51,7 @@ const Nav = ({ minimal }) => {
             <ion-icon name="logo-ionic"></ion-icon>
           </span>
           <Link href="/">
-            <Image
-              src="https://imgur.com/hgn8JNF.png"
-              alt="logo"
-              height={50}
-              width={50}
-            />
+            BREEDIT
           </Link>
         </div>
 
