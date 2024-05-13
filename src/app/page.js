@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Fade from "../app/Components/Fade";
@@ -16,13 +16,12 @@ import Hero from "../app/Components/Landing Page/Hero";
 import { useMediaQuery } from "react-responsive";
 import MobileUsers from "./Components/MobileUsers";
 
- export default function Page () {
-
+export default function Page() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const authToken = cookies.AuthToken;
 
-   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
   return isTabletOrMobile ? (
     <MobileUsers />
   ) : (
@@ -55,5 +54,4 @@ import MobileUsers from "./Components/MobileUsers";
       </Fade>
     </>
   );
-};
-
+}
